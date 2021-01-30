@@ -3,13 +3,11 @@ import moment from "moment";
 import React from "react";
 
 const Break = ({
-    breakLengthInSeconds,
+    breakLength,
     decrementBreakLengthByOneMinute,
     incrementBreakLengthByOneMinute,
 }) => {
-    const breakLengthInMinutes = moment
-        .duration(breakLengthInSeconds, "s")
-        .minutes(); // Here I convert the seconds to minutes !
+    const breakLengthInMinutes = moment.duration(breakLength, "s").asMinutes(); // Here I convert the seconds to minutes !
     return (
         <div>
             <p id={"break-label"}>{"Break"}</p>
