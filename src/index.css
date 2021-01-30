@@ -1,14 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ./tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-    background-color: #ff9ea1;
+    margin: 0;
+    background-color: #f87171;
     color: white;
-}
-#app {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
+    font-family: system-ui, -apple-system,
+        /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }

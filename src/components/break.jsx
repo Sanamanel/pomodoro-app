@@ -1,6 +1,14 @@
 // /src/components/break.jsx
+
 import moment from "moment";
 import React from "react";
+import {
+    BreakSessionContainer,
+    BreakSessionLabel,
+    BreakSessionTime,
+    PlusMinusButtonContainer,
+    PlusMinusButton,
+} from "../components/ui/BreakSessionUi";
 
 const Break = ({
     breakLength,
@@ -9,22 +17,26 @@ const Break = ({
 }) => {
     const breakLengthInMinutes = moment.duration(breakLength, "s").asMinutes(); // Here I convert the seconds to minutes !
     return (
-        <div>
-            <p id={"break-label"}>{"Break"}</p>
-            <p id={"break-length"}>{breakLengthInMinutes}</p>
-            <button
-                type={"button"}
-                id={"break-decrement"}
-                onClick={decrementBreakLengthByOneMinute}>
-                {"-"}
-            </button>
-            <button
-                type={"button"}
-                id={"break-increment"}
-                onClick={incrementBreakLengthByOneMinute}>
-                {"+"}
-            </button>
-        </div>
+        <BreakSessionContainer>
+            <BreakSessionLabel id={"break-label"}>{"Break"}</BreakSessionLabel>
+            <BreakSessionTime id={"break-length"}>
+                {breakLengthInMinutes}
+            </BreakSessionTime>
+            <PlusMinusButtonContainer>
+                <PlusMinusButton
+                    type={"button"}
+                    id={"break-decrement"}
+                    onClick={decrementBreakLengthByOneMinute}>
+                    {"-"}
+                </PlusMinusButton>
+                <PlusMinusButton
+                    type={"button"}
+                    id={"break-increment"}
+                    onClick={incrementBreakLengthByOneMinute}>
+                    {"+"}
+                </PlusMinusButton>
+            </PlusMinusButtonContainer>
+        </BreakSessionContainer>
     );
 };
 

@@ -16,6 +16,23 @@ function App() {
         setTimeLeft(sessionLength);
     }, [sessionLength]);
 
+    //listen to timeLeft changes
+    // if it is zero we play the audio
+    // And change session to break or break to session depends on his state
+    useEffect(() => {
+        // if timeLeft is zero
+        if (timeLeft === 0) {
+            audioElement.current.play();
+            if (currentSessionType === "Session") {
+                setCurrentSessionType("Break");
+                setTimeLeft(breakLength);
+            } else if (currentSessionType === "Break") {
+                setCurrentSessionType("Session");
+                setTimeLeft(sessionLength);
+            }
+        }
+    }, [breakLength, currentSessionType, sessionLength, timeLeft]);
+
     const decrementBreakLengthByOneMinute = () => {
         const newBreakLength = breakLength - 60;
         if (newBreakLength > 0) {
@@ -102,37 +119,36 @@ function App() {
         setTimeLeft(60 * 25);
     };
     return (
-        <div className={"App"}>
-            <Break
-                breakLength={breakLength}
-                decrementBreakLengthByOneMinute={
-                    decrementBreakLengthByOneMinute
-                }
-                incrementBreakLengthByOneMinute={
-                    incrementBreakLengthByOneMinute
-                }
-            />
-            <TimeLeft
-                handleStartStopClick={handleStartStopClick}
-                timerLabel={currentSessionType}
-                startStopButtonLabel={isStarted ? "Stop" : "Start"}
-                timeLeft={timeLeft}
-            />
-            <Session
-                sessionLength={sessionLength}
-                decrementSessionLengthByOneMinute={
-                    decrementSessionLengthByOneMinute
-                }
-                incrementSessionLengthByOneMinute={
-                    incrementSessionLengthByOneMinute
-                }
-            />
-            <button
-                type={"reset"}
-                id={"reset"}
-                onClick={handleResetButtonClick}>
-                {"Reset"}
-            </button>
+        <div className={"flex flex-col h-screen items-center justify-center"}>
+            <div className={"flex w-full justify-around"}>
+                <Break
+                    breakLength={breakLength}
+                    decrementBreakLengthByOneMinute={
+                        decrementBreakLengthByOneMinute
+                    }
+                    incrementBreakLengthByOneMinute={
+                        incrementBreakLengthByOneMinute
+                    }
+                />
+                <TimeLeft
+                    handleResetButtonClick={handleResetButtonClick}
+                    handleStartStopClick={handleStartStopClick}
+                    timerLabel={currentSessionType}
+                    startStopButtonLabel={isStarted ? "Stop" : "Start"}
+                    timeLeft={timeLeft}
+                />
+
+                <Session
+                    sessionLength={sessionLength}
+                    decrementSessionLengthByOneMinute={
+                        decrementSessionLengthByOneMinute
+                    }
+                    incrementSessionLengthByOneMinute={
+                        incrementSessionLengthByOneMinute
+                    }
+                />
+            </div>
+
             <audio id={"beep"} ref={audioElement}>
                 <source
                     src={"https://onlineclock.net/audio/options/default.mp3"}
