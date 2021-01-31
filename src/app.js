@@ -74,6 +74,8 @@ function App() {
                 // eslint-disable-next-line arrow-parens
                 // eslint-disable-next-line prettier/prettier
                 // eslint-disable-next-line consistent-return
+                // eslint-disable-next-line arrow-parens
+                // eslint-disable-next-line consistent-return
                 setTimeLeft(prevTimeLeft => {
                     const newTimeLeft = prevTimeLeft - 1;
                     if (newTimeLeft >= 0) {
@@ -98,7 +100,7 @@ function App() {
                         return sessionLength;
                     }
                 });
-            }, 100);
+            }, 1000);
             setIntervalId(newIntervalId);
         }
     };
