@@ -71,35 +71,7 @@ function App() {
             // decrement timeLeft by one every second(1000ms) on click start
             // to do this we'll use the setInterval function
             const newIntervalId = setInterval(() => {
-                // eslint-disable-next-line arrow-parens
-                // eslint-disable-next-line prettier/prettier
-                // eslint-disable-next-line consistent-return
-                // eslint-disable-next-line arrow-parens
-                // eslint-disable-next-line consistent-return
-                setTimeLeft(prevTimeLeft => {
-                    const newTimeLeft = prevTimeLeft - 1;
-                    if (newTimeLeft >= 0) {
-                        return newTimeLeft;
-                    }
-                    // timeLeft is less than zero play beep
-                    audioElement.current.play();
-                    // if session
-
-                    if (currentSessionType === "Session") {
-                        // switch to break mode
-                        setCurrentSessionType("Break");
-                        //setTimeLeft to breakLength
-                        return breakLength;
-                    }
-
-                    // if Break
-                    else if (currentSessionType === "Break") {
-                        //switch to session
-                        setCurrentSessionType("Session");
-                        //setTimeLeft to sessionLength
-                        return sessionLength;
-                    }
-                });
+                setTimeLeft(prevTimeLeft => prevTimeLeft - 1);
             }, 1000);
             setIntervalId(newIntervalId);
         }

@@ -5,7 +5,13 @@
 
 body {
     margin: 0;
-    background-color: #f87171;
+    background: rgb(254, 122, 157);
+    background: linear-gradient(
+        90deg,
+        rgba(254, 122, 157, 1) 0%,
+        rgba(248, 113, 113, 1) 46%,
+        rgba(191, 50, 90, 1) 100%
+    );
     color: white;
     font-family: system-ui, -apple-system,
         /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
