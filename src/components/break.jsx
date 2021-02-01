@@ -18,7 +18,9 @@ const Break = ({
     const breakLengthInMinutes = moment.duration(breakLength, "s").asMinutes(); // Here I convert the seconds to minutes !
     return (
         <BreakSessionContainer>
-            <BreakSessionLabel id={"break-label"}>{"Break"}</BreakSessionLabel>
+            <BreakSessionLabel id={"break-label"}>
+                {"Break Time"}
+            </BreakSessionLabel>
             <BreakSessionTime id={"break-length"}>
                 {breakLengthInMinutes}
             </BreakSessionTime>

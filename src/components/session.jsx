@@ -21,7 +21,7 @@ const Session = ({
     return (
         <BreakSessionContainer>
             <BreakSessionLabel id={"session-label"}>
-                {"Session"}
+                {"Session Time"}
             </BreakSessionLabel>
             <BreakSessionTime id={"session-length"}>
                 {sessionLengthInMinutes}
